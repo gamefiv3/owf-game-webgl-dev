@@ -102,6 +102,21 @@
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
           };
+
+            // Callback for the Unity OnClose event
+            window.onbeforeunload = function(e) {
+                
+                // These are the messages you're seeing in the gif
+                console.log("Calling OnClose from Browser!");
+                unityInstance.SendMessage("WorldManager", "UpdatePlayerSessionPositionOnExit");
+            
+                // This never shows up correctly for me, but it does prompt
+                // the player to close their window with a dialogue box
+                //
+                var dialogText = "Progress will be saved. Are you sure you want to leave the website?";
+                e.returnValue = dialogText;
+                return dialogText;
+            };
         }).catch((message) => {
           alert(message);
         });
