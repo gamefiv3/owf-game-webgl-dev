@@ -87,8 +87,15 @@
         config.devicePixelRatio = 1;
         unityShowBanner('WebGL builds are not supported on mobile devices.');
       } else {
+        const isSmall = screen.width <= 1200;
         canvas.style.width = "1280px";
         canvas.style.height = "720px";
+
+        if (isSmall)
+        {
+            canvas.style.width = 920;
+            canvas.style.height = 540;
+        }
       }
       loadingBar.style.display = "block";
 
