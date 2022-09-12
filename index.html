@@ -91,21 +91,25 @@
         function ResizeWindow()
         {
             let width, height;
+
+            const aspect = 1280 / 720;
+            const currentAspect = window.innerWidth / window.innerHeight;
+
+            console.log(window.innerWidth, window.innerHeight);
         
             // Use height as basis
-            if (window.innerWidth > window.innerHeight)
+            if (aspect < currentAspect)
             {   
-                width = window.innerHeight * 1.78;
+                width = window.innerHeight * aspect;
                 height = window.innerHeight;
+                
+                
             }
             else
             {
                 width =  window.innerWidth;
-                height = window.innerWidth / 1.78;
+                height = window.innerWidth / aspect;
             }
-
-            // canvas.style.width = "1280px";
-            // canvas.style.height = "720px";
 
             canvas.style.width = `${width}px`;
             canvas.style.height = `${height}px`;
