@@ -57,3 +57,11 @@ body { padding: 0; margin: 0; background-color: black; overflow-x: hidden; overf
     font-size: 5rem;
     font-weight: 200;
 }
+
+#unity-error-desc {
+    color: white;
+    text-align: center;
+    font-family: "ThaleahFat", sans-serif;
+    font-size: 3.5rem;
+    font-weight: 200;
+}
