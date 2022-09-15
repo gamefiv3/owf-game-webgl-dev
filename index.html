@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Our World is Flat | Our World Is Flat</title>
+    <title>Our World is Flat | VC World</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -16,13 +16,17 @@
           <div id="unity-progress-bar-full"></div>
         </div>
       </div>
-      <div id="unity-warning"> </div>
       <!-- <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Our World Is Flat</div>
+        <div id="unity-build-title">VC World</div>
 				<div id="unity-build-title">Fullscreen</div>
       </div> -->
+    </div>
+    <div id="unity-mobile-page">
+        <div id="unity-mobile-page-inner">
+            <h1 id="unity-error-header">WebGL builds are not supported on mobile devices</h1>
+        </div>
     </div>
 		<!-- <div id="footer">
 			<div id="footer-content">© Metaverse - 2022</div>
@@ -35,7 +39,8 @@
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var warningBanner = document.querySelector("#unity-warning");
-
+      var mobileScreen = document.querySelector("#unity-mobile-page");
+      var errorHeader = document.querySelector("#unity-error-header");
       // Shows a temporary message banner/ribbon for a few seconds, or
       // a permanent error message on top of the canvas if type=='error'.
       // If type=='warning', a yellow highlight color is used.
@@ -43,21 +48,22 @@
       // way that non-critical warnings and error messages are presented to the
       // user.
       function unityShowBanner(msg, type) {
-        function updateBannerVisibility() {
-          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-        }
-        var div = document.createElement('div');
-        div.innerHTML = msg;
-        warningBanner.appendChild(div);
-        if (type == 'error') div.style = 'background: red; padding: 10px;';
-        else {
-          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-          setTimeout(function() {
-            warningBanner.removeChild(div);
-            updateBannerVisibility();
-          }, 5000);
-        }
-        updateBannerVisibility();
+        errorHeader.innerHTML = msg;
+        // function updateBannerVisibility() {
+        //   warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+        // }
+        // var div = document.createElement('div');
+        // div.innerHTML = msg;
+        // warningBanner.appendChild(div);
+        // if (type == 'error') div.style = 'background: red; padding: 10px;';
+        // else {
+        //   if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+        //   setTimeout(function() {
+        //     warningBanner.removeChild(div);
+        //     updateBannerVisibility();
+        //   }, 5000);
+        // }
+        // updateBannerVisibility();
       }
 
       var buildUrl = "Build";
@@ -68,7 +74,7 @@
         codeUrl: buildUrl + "/build.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "owf",
-        productName: "Our World Is Flat",
+        productName: "VC World",
         productVersion: "0.3",
         showBanner: unityShowBanner,
       };
@@ -85,6 +91,9 @@
         // Avoid draining fillrate performance on mobile devices,
         // and default/override low DPI mode on mobile browsers.
         config.devicePixelRatio = 1;
+        canvas.style.display = 'none';
+        loadingBar.style.display = 'none';
+        mobileScreen.style.display = 'flex';
         unityShowBanner('WebGL builds are not supported on mobile devices.');
       } else {
 
@@ -135,7 +144,7 @@
                     
                     // These are the messages you're seeing in the gif
                     console.log("Calling OnClose from Browser!");
-                    unityInstance.SendMessage("WorldManager", "UpdatePlayerSessionPositionOnExit");
+                    unityInstance.SendMessage("WorldManager", "WebGLOnExit");
                 
                     // This never shows up correctly for me, but it does prompt
                     // the player to close their window with a dialogue box

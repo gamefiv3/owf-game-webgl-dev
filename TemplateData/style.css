@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "ThaleahFat";
+    src: url('ThaleahFat_TTF.ttf') format("truetype");
+}
+
 body { padding: 0; margin: 0; background-color: black; overflow-x: hidden; overflow-y: hidden; }
 #unity-container { position: absolute }
 #unity-container.unity-desktop { left: 50%; top: 50%; transform: translate(-50%, -50%) }
@@ -14,6 +19,7 @@ body { padding: 0; margin: 0; background-color: black; overflow-x: hidden; overf
 #unity-build-title { float: right; margin-right: 10px; line-height: 38px; font-family: arial; font-size: 18px; color: white; }
 #unity-fullscreen-button { float: right; width: 38px; height: 38px; background: url('fullscreen-button.png') no-repeat center }
 #unity-warning { position: absolute; left: 50%; top: 5%; transform: translate(-50%); background: white; padding: 10px; display: none }
+
 #footer {
     position: absolute;
     bottom: 0;
@@ -25,4 +31,30 @@ body { padding: 0; margin: 0; background-color: black; overflow-x: hidden; overf
     font-family: arial;
     font-size: 14px;
     color: white;
+}
+
+#unity-mobile-page {
+    /* display: none; */
+    width: 100vw;
+    height: 100vh;
+    background: url('splash.png') no-repeat center;
+    background-size: cover;
+    background-color: rgba(0,0,0,0.6);
+    background-blend-mode: darken;
+    display: none;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+}
+
+#unity-mobile-page-inner {
+    margin: 2rem;
+}
+
+#unity-mobile-page h1 {
+    color: white;
+    text-align: center;
+    font-family: "ThaleahFat", sans-serif;
+    font-size: 5rem;
+    font-weight: 200;
 }
