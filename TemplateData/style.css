@@ -34,7 +34,6 @@ body { padding: 0; margin: 0; background-color: black; overflow-x: hidden; overf
 }
 
 #unity-mobile-page {
-    display: none;
     width: 100vw;
     height: 100vh;
     background: url('splash.png') no-repeat center;
