@@ -5,25 +5,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>VCWorld | ValueChampion Singapore</title>
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-WNR66C8');
-    </script>
-    <!-- End Google Tag Manager -->
-
     <meta name="description" content="Explore the VCWorld, unearth its secrets and pass the tests from the protectors to locate the treasures.">
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNR66C8"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
+    <input
+    style="position:absolute; z-index: 1; padding: 5px; margin: 5px;"
+    type="button"
+    value="Fullscreen"
+    onclick="document.toggleFullScreen(document.body)"
+    />
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=1280 height=720></canvas>
       <div id="unity-loading-bar">
@@ -92,7 +84,7 @@
         streamingAssetsUrl: "StreamingAssets",
         companyName: "owf",
         productName: "VCWorld",
-        productVersion: "1.0.3",
+        productVersion: "1.0.4",
         showBanner: unityShowBanner,
       };
 
@@ -103,7 +95,8 @@
       // the canvas DOM size and WebGL render target sizes yourself.
       // config.matchWebGLToCanvasSize = false;
 
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+    //   if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+    if (false) {
         container.className = "unity-mobile";
         // Avoid draining fillrate performance on mobile devices,
         // and default/override low DPI mode on mobile browsers.
@@ -177,6 +170,44 @@
         document.body.appendChild(script);
       }
       loadingBar.style.display = "block";
+
+
+      function toggleFullScreen(elem) {
+        // ## The below if statement seems to work better ## if ((document.fullScreenElement && document.fullScreenElement !== null) || (document.msfullscreenElement && document.msfullscreenElement !== null) || (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+        // @ts-ignore
+        if ((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
+            if (elem.requestFullScreen) {
+                elem.requestFullScreen();
+            } else if (elem.mozRequestFullScreen) {
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullScreen) {
+              // @ts-ignore
+                elem.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            }
+        } else {
+          // @ts-ignore
+            if (document.cancelFullScreen) {
+              // @ts-ignore
+                document.cancelFullScreen();
+                // @ts-ignore
+            } else if (document.mozCancelFullScreen) {
+              // @ts-ignore
+                document.mozCancelFullScreen();
+                // @ts-ignore
+            } else if (document.webkitCancelFullScreen) {
+              // @ts-ignore
+                document.webkitCancelFullScreen();
+                // @ts-ignore
+            } else if (document.msExitFullscreen) {
+              // @ts-ignore
+                document.msExitFullscreen();
+            }
+        }
+      }
+
+      document.toggleFullScreen = toggleFullScreen;
     </script>
   </body>
 </html>
