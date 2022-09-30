@@ -119,27 +119,29 @@
             const aspect = 1280 / 720;
             const currentAspect = window.innerWidth / window.innerHeight;
 
-            console.log(window.innerWidth, window.innerHeight);
-        
             // Use height as basis
             if (aspect < currentAspect)
             {   
                 width = window.innerHeight * aspect;
                 height = window.innerHeight;
-                
-                
             }
             else
             {
                 width =  window.innerWidth;
                 height = window.innerWidth / aspect;
             }
+            
+            const widthStr = `${width}px`;
+            const heightStr = `${height}px`;
 
-            canvas.style.width = `${width}px`;
-            canvas.style.height = `${height}px`;
+            if (canvas.style.width != widthStr)
+                canvas.style.width = widthStr;
+
+            if (canvas.style.height != heightStr)
+                canvas.style.height = heightStr;
         }
         
-        setTimeout(() => ResizeWindow(), 100);
+        setInterval(ResizeWindow, 100);
 
         window.addEventListener('resize', ResizeWindow);
 
