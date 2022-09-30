@@ -139,7 +139,7 @@
             canvas.style.height = `${height}px`;
         }
         
-        ResizeWindow();
+        setTimeout(() => ResizeWindow(), 100);
 
         window.addEventListener('resize', ResizeWindow);
 
