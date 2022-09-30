@@ -47,8 +47,7 @@ body {
     height: 100vh;
     background: url('splash.png') no-repeat center;
     background-size: cover;
-    background-color: rgba(0,0,0,0.6);
-    background-blend-mode: darken;
+    background-color: black;
     display: none;
     position: absolute;
     justify-content: center;
