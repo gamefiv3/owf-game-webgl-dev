@@ -98,18 +98,18 @@
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         
         //   if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        if (isMobile) {
-            // container.className = "unity-mobile";
+        // if (isMobile) {
+        //     // container.className = "unity-mobile";
 
-            // Avoid draining fillrate performance on mobile devices,
-            // and default/override low DPI mode on mobile browsers.
-            config.devicePixelRatio = 1;
+        //     // Avoid draining fillrate performance on mobile devices,
+        //     // and default/override low DPI mode on mobile browsers.
+        //     config.devicePixelRatio = 1;
 
-            // canvas.style.display = 'none';
-            // loadingBar.style.display = 'none';
-            // mobileScreen.style.display = 'flex';
-            // unityShowBanner('WebGL builds are not supported on mobile devices.');
-        }
+        //     // canvas.style.display = 'none';
+        //     // loadingBar.style.display = 'none';
+        //     // mobileScreen.style.display = 'flex';
+        //     // unityShowBanner('WebGL builds are not supported on mobile devices.');
+        // }
 
         function ResizeWindow() {
             let width, height;

@@ -72,6 +72,10 @@ body {
     color: white;
     text-align: center;
     font-family: "ThaleahFat", sans-serif;
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 200;
+}
+
+#unity-loading-mobile-message {
+    font-size: 1rem;
 }
