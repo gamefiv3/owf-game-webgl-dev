@@ -68,14 +68,15 @@ body {
 }
 
 #unity-error-desc,
-#unity-loading-mobile-message {
+.unity-loading-mobile-message {
     color: white;
     text-align: center;
     font-family: "ThaleahFat", sans-serif;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 200;
+    max-width: 60ch;
 }
 
-#unity-loading-mobile-message {
-    font-size: 1rem;
+.unity-loading-mobile-message {
+    font-size: 1.5rem;
 }

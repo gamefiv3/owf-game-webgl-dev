@@ -6,16 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
     <title>VCWorld | ValueChampion Singapore</title>
 
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NVV8HW4');</script>
+    <!-- End Google Tag Manager -->
+
     <meta name="description" content="Explore the VCWorld, unearth its secrets and pass the tests from the protectors to locate the treasures.">
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVV8HW4"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=1280 height=720></canvas>
       <div id="unity-loading-bar">
         <!-- <div id="unity-logo"></div> -->
-        <p id="unity-loading-mobile-message">
+        <p class="unity-loading-mobile-message">
             Some features may not work in mobile devices, for best experience please use a laptop or desktop.
         </p>
         <div id="unity-progress-bar-empty">
@@ -33,6 +46,7 @@
         <div id="unity-mobile-page-inner">
             <!-- <h1 id="unity-error-header">Please rotate to landscape for better experience.</h1> -->
             <p id="unity-error-desc">Please rotate to landscape for better experience.</p>
+            <p class="unity-loading-mobile-message">Some features may not work in mobile devices, for best experience please use a laptop or desktop.</p>
         </div>
     </div>
     <!-- <div id="footer">
@@ -84,7 +98,7 @@
             streamingAssetsUrl: "StreamingAssets",
             companyName: "owf",
             productName: "VCWorld",
-            productVersion: "1.0.6",
+            productVersion: "1.07",
             // showBanner: unityShowBanner,
         };
 
@@ -175,34 +189,6 @@
         mobileScreen.style.display = 'none';
         loadingBar.style.display = "block";
         loadingMobileMessage.style.display = isMobile ? 'block' : 'none';
-
-
-        function toggleFullScreen(elem) {
-            // ## The below if statement seems to work better ## if ((document.fullScreenElement && document.fullScreenElement !== null) || (document.msfullscreenElement && document.msfullscreenElement !== null) || (!document.mozFullScreen && !document.webkitIsFullScreen)) {
-            if ((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
-                if (elem.requestFullScreen) {
-                    elem.requestFullScreen();
-                } else if (elem.mozRequestFullScreen) {
-                    elem.mozRequestFullScreen();
-                } else if (elem.webkitRequestFullScreen) {
-                    elem.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-                } else if (elem.msRequestFullscreen) {
-                    elem.msRequestFullscreen();
-                }
-            } else {
-                if (document.cancelFullScreen) {
-                    document.cancelFullScreen();
-                } else if (document.mozCancelFullScreen) {
-                    document.mozCancelFullScreen();
-                } else if (document.webkitCancelFullScreen) {
-                    document.webkitCancelFullScreen();
-                } else if (document.msExitFullscreen) {
-                    document.msExitFullscreen();
-                }
-            }
-        }
-
-        // document.toggleFullScreen = toggleFullScreen;
     </script>
   </body>
 </html>
