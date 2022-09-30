@@ -7,11 +7,11 @@
     <title>VCWorld | ValueChampion Singapore</title>
 
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NVV8HW4');</script>
+    })(window,document,'script','dataLayer','GTM-NVV8HW4');</script> -->
     <!-- End Google Tag Manager -->
 
     <meta name="description" content="Explore the VCWorld, unearth its secrets and pass the tests from the protectors to locate the treasures.">
@@ -20,8 +20,8 @@
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVV8HW4"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVV8HW4"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
     <!-- End Google Tag Manager (noscript) -->
 
     <div id="unity-container" class="unity-desktop">
@@ -98,7 +98,7 @@
             streamingAssetsUrl: "StreamingAssets",
             companyName: "owf",
             productName: "VCWorld",
-            productVersion: "1.08",
+            productVersion: "1.0.9",
             // showBanner: unityShowBanner,
         };
 
@@ -124,7 +124,7 @@
         //     // mobileScreen.style.display = 'flex';
         //     // unityShowBanner('WebGL builds are not supported on mobile devices.');
         // }
-
+        let isInitialized = false;
         function ResizeWindow() {
             let width, height;
 
@@ -154,6 +154,9 @@
 
             mobileScreen.style.display = window.innerHeight > window.innerWidth ? 'flex' : 'none';
             canvas.style.display = window.innerHeight > window.innerWidth ? 'none' : 'unset';
+
+            if (isInitialized && loadingBar.style.display !== 'none')
+                loadingBar.style.display = "none";
         };
         
         setInterval(ResizeWindow, 100);
@@ -166,6 +169,7 @@
             createUnityInstance(canvas, config, (progress) => {
                 progressBarFull.style.width = 100 * progress + "%";
             }).then((unityInstance) => {
+                isInitialized = true;
                 loadingBar.style.display = "none";
 
                 // Callback for the Unity OnClose event
@@ -187,8 +191,11 @@
 
         
         mobileScreen.style.display = 'none';
-        loadingBar.style.display = "block";
         loadingMobileMessage.style.display = isMobile ? 'block' : 'none';
+
+        setTimeout(() => {
+            loadingBar.style.display = "block";
+        }, 1000);
     </script>
   </body>
 </html>
